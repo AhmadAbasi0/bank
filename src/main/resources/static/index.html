@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Your Trusted Financial Partner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="#home">
+            <i class="fas fa-building"></i> SecureBank
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="navbar-desktop">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="#dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item user-greeting d-none">
+                    <span class="nav-link user-pill" id="navUsername"></span>
+                </li>
+                <li class="nav-item d-none" id="profileNavItem">
+                    <a class="nav-link profile-link" href="profile.html">
+                        <i class="fas fa-user-circle"></i> Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-logout" id="logoutBtn" style="display: none;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger-menu" id="hamburgerMenu" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hamburger Menu Dropdown -->
+<div class="hamburger-menu-dropdown" id="hamburgerMenuDropdown">
+    <div class="menu-content">
+        <div class="menu-header">
+            <h3>Menu</h3>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="#dashboard">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#services">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li class="menu-item" id="mobileProfileItem" style="display: none;">
+                <a href="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+            <li class="menu-item" id="mobileTransactionItem" style="display: none;">
+                <a href="transaction.html">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Money</span>
+                </a>
+            </li>
+            <li class="menu-item" id="mobileLoanItem" style="display: none;">
+                <a href="loan.html">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Apply for Loan</span>
+                </a>
+            </li>
+            <li class="menu-item" id="mobileAdminItem" style="display: none;">
+                <a href="admin.html">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Admin Panel</span>
+                </a>
+            </li>
+            <li class="menu-divider" id="mobileDivider" style="display: none;"></li>
+            <li class="menu-item logout-item" id="mobileLogoutItem" style="display: none;">
+                <button id="logoutBtnMobile" class="logout-button">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Welcome to SecureBank</span>
+                        <span class="user-highlight d-none" id="heroWelcome"></span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Your trusted partner in financial excellence
+                    </p>
+                    <p class="hero-description">
+                        Experience secure, reliable, and innovative banking services designed for your financial success. Manage your accounts, book appointments, and access premium banking features all in one place.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-arrow-right"></i> Explore Services
+                        </a>
+                        <a href="profile.html" class="btn btn-outline-primary btn-lg" id="profileButtonHero" style="display: none;">
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Digital Cards</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile Banking</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure & Safe</span>
+                        </div>
+                        <div class="floating-card card-4">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Investments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Section -->
+<section id="dashboard" class="dashboard-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Your Financial Dashboard</h2>
+            <p>Quick access to your accounts and recent transactions</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Account Balance Card -->
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card account-card">
+                    <div class="card-header">
+                        <h3>Account Balance</h3>
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="card-body">
+                        <p class="balance-label">Total Balance</p>
+                        <p class="balance-amount" id="dashboardBalance">$0.00</p>
+                        <div class="card-footer-text">
+                            <span><i class="fas fa-check-circle"></i> Account Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Points Card -->
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card points-card">
+                    <div class="card-header">
+                        <h3>Loyalty Points</h3>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="card-body">
+                        <p class="balance-label">Total Points</p>
+                        <p class="balance-amount" id="dashboardPoints">0</p>
+                        <div class="card-footer-text">
+                            <span><i class="fas fa-gift"></i> Redeem points for rewards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debt Card -->
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card debt-card">
+                    <div class="card-header">
+                        <h3>Debt</h3>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="card-body">
+                        <p class="balance-label">Total Debt</p>
+                        <p class="balance-amount debt-amount" id="dashboardDebt">-$0.00</p>
+                        <div class="card-footer-text">
+                            <span><i class="fas fa-info-circle"></i> Manage your debt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive banking solutions tailored for you</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Digital Cards</h3>
+                    <p>Instant virtual cards for secure online shopping and payments</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Banking</h3>
+                    <p>Bank anytime, anywhere with our powerful mobile app</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Money Transfer</h3>
+                    <p>Fast and secure domestic and international transfers</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Plans</h3>
+                    <p>Grow your wealth with our curated investment portfolios</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Home Loans</h3>
+                    <p>Affordable home financing with competitive interest rates</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Auto Loans</h3>
+                    <p>Quick approval for your dream vehicle purchase</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Insurance</h3>
+                    <p>Comprehensive insurance products for peace of mind</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support and assistance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <div class="col-lg-3 col-md-6">
+                <h5>About SecureBank</h5>
+                <p>Your trusted financial partner since 2025, serving millions of customers worldwide.</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Services</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Digital Banking</a></li>
+                    <li><a href="#">Loans</a></li>
+                    <li><a href="#">Investments</a></li>
+                    <li><a href="#">Insurance</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Contact</h5>
+                <p>
+                    <i class="fas fa-phone"></i> 1-800-SECURE-BANK<br>
+                    <i class="fas fa-envelope"></i> support@securebank.com<br>
+                    <i class="fas fa-map-marker-alt"></i> 123 Finance Street, NY 10001
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SecureBank. All rights reserved. | Secure Banking for Everyone</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+<script src="js/menu.js" defer></script>
+</body>
+</html>
